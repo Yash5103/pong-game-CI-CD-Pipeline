@@ -247,9 +247,85 @@ docker run hello-world
 
 ---
 
-✅ Once Docker is installed, proceed to AWS CLI configuration.
+Here’s the **Configure AWS CLI** section formatted in **Markdown** for your README:
+
+---
+
+
+## 🔧 Configure AWS CLI
+
+The **AWS Command Line Interface (CLI)** allows you to interact with AWS services directly from your terminal. Follow the steps below to install and configure the AWS CLI on your system.
+
+---
+
+### 🪟 AWS CLI Installation on Windows
+
+#### 📥 Download and Install AWS CLI
+- Go to the [AWS CLI Download page](https://aws.amazon.com/cli/)
+- Download the latest **Windows Installer** (.msi file)
+- Run the installer and follow the instructions
+
+#### 🔍 Verify Installation
+Once installed, open **Command Prompt (cmd)** and run:
+
+```bash
+aws --version
+```
+
+You should see something like:
+
+```bash
+aws-cli/2.x.x Python/3.x.x Windows/10
+```
+
+If this appears, the installation was successful!
+
+---
+
+### 🍏 AWS CLI Installation on macOS
+
+#### 📥 Install AWS CLI
+- Open the **Terminal** app
+- Install AWS CLI using **Homebrew** (recommended):
+
+```bash
+brew install awscli
+```
+
+#### 🔍 Verify Installation
+Run the following command in **Terminal**:
+
+```bash
+aws --version
+```
+
+If it displays the version number, the installation is complete!
+
+---
+
+### 🐧 AWS CLI Installation on Linux
+
+#### 📥 Download and Install AWS CLI
+Open the **Terminal** and run:
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+#### 🔍 Verify Installation
+Check the AWS CLI version by running:
+
+```bash
+aws --version
+```
+
+If you see the version number, the installation was successful!
 ```
 
 ---
+
+You can now copy and paste this directly into your `README.md`. Let me know if you need help with the next section! 🛠️
 
 

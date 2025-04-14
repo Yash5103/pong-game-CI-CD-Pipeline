@@ -748,6 +748,159 @@ Visit your GitHub repository in the browser. You should now see:
 🎉 You’ve successfully set up and pushed your Ping Pong Game code to GitHub with a ready-to-go CI/CD pipeline using AWS services!
 ```
 
+Here's your **complete and cleanly formatted guide** with updated names (replacing **2048** with **Ping Pong Game**), and **no content skipped**, exactly as per your request:
 
+---
+
+```
+## 🛠️ Set Up CodeBuild for Continuous Integration (CI) – Ping Pong Game
+
+---
+
+### ✅ STEPS TO BE PERFORMED:
+
+1. Create an IAM Role for CodeBuild  
+2. Create an S3 Bucket for Build Artifacts  
+3. Create a CodeBuild Project  
+4. Test the CodeBuild Project  
+
+---
+
+### 🔐 1. Create an IAM Role for CodeBuild
+
+AWS services like CodeBuild need permissions to interact with **ECR**, **ECS**, **S3**, and **CodeBuild** itself.
+
+#### ▶️ Go to the IAM Console:
+
+- Navigate to the [IAM](https://console.aws.amazon.com/iam) section of the AWS console.
+
+#### ▶️ Create a New IAM Role:
+
+- Click **Create Role**  
+- Choose **CodeBuild** as the **trusted entity type**
+
+#### ▶️ Attach the Following Managed Policies:
+
+- `AmazonEC2ContainerRegistryFullAccess`: Allows CodeBuild to interact with ECR  
+- `AWSCodeBuildDeveloperAccess`: Grants CodeBuild access to build-related services  
+- `AmazonS3FullAccess`: Grants read/write access to S3 buckets (for storing build artifacts)
+
+#### ▶️ Name the Role:
+
+- Example: `codeBuildServiceRole`  
+- Click **Create Role**
+
+---
+
+#### 🧩 Attach Inline Policy for ECS
+
+1. Go to the role: `IAM > Roles > codeBuildServiceRole`
+2. Click **Add permissions > Create inline policy**
+3. Click on the **JSON** tab
+4. Paste the following policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecs:UpdateService",
+        "ecs:DescribeServices"
+      ],
+      "Resource": "<ENTER_YOUR_ECS_SERVICE_ARN>"
+    }
+  ]
+}
+```
+
+<aside>📌  
+You can get your `<ECS_SERVICE_ARN>` by navigating to:  
+**ECS > Clusters > pingpong-game-cluster > Services > pingpong-service**  
+</aside>
+
+5. Click **Next**, give a name (e.g., `ECSAccessPolicy`), and **Create Policy**
+
+---
+
+### 🪣 2. Create a S3 Bucket for Build Artifacts
+
+CodeBuild generates output files like Docker image metadata and logs. These are stored in an **S3 bucket** for later access.
+
+#### ▶️ Steps:
+
+1. Navigate to the [S3 Console](https://s3.console.aws.amazon.com/s3/)
+2. Click **Create Bucket**
+3. Name it something like: `pingpong-ci-cd-pipeline-artifacts`  
+   (📌 Bucket name must be globally unique)
+4. Keep the rest of the settings default  
+5. Click **Create Bucket**
+
+---
+
+### 🔧 3. Create a CodeBuild Project
+
+The CodeBuild project pulls your GitHub repo, builds the Docker image, and stores results in S3.
+
+#### ▶️ Go to CodeBuild Console:
+
+- Navigate to [CodeBuild Console](https://console.aws.amazon.com/codebuild/home)  
+- Click **Create Build Project**
+
+#### ▶️ Configure the Project:
+
+- **Project Name**: `pingpong-game-build`
+- **Source Provider**: Choose **GitHub**
+- Click on **Manage default source credential**
+  - Use **OAuth App** for Credential type
+  - Use **CodeBuild** as service
+- Select the GitHub repository created earlier
+
+#### ▶️ Environment Settings:
+
+- Keep other environment configs default
+- **Service Role**: Choose **Existing Role** and select `codeBuildServiceRole` created earlier
+
+#### ▶️ Buildspec Configuration:
+
+- Select **Use a buildspec file**
+
+#### ▶️ Artifacts Configuration:
+
+- **Type**: Amazon S3
+- **Bucket**: Choose `pingpong-ci-cd-pipeline-artifacts`
+- Leave all other settings default
+
+#### ▶️ Create the Build Project:
+
+- Review all the settings  
+- Click **Create Build Project**
+
+---
+
+### 🧪 4. Test the CodeBuild Project
+
+#### ▶️ Start a Build:
+
+- In CodeBuild console, select the project (`pingpong-game-build`)
+- Click **Start Build** to trigger manually
+
+#### ▶️ Verify Build Success:
+
+- Monitor **Build Logs** to ensure:
+  - Docker image is built
+  - Image is pushed to **ECR**
+- Check the **S3 bucket** to ensure:
+  - `imagedefinitions.json` file is generated and uploaded successfully
+
+---
+
+🎉 You’ve now successfully set up **CodeBuild for CI** with your **Ping Pong Game** project!
+```
+
+---
+
+Let me know if you want the next part for **CodePipeline deployment to ECS**, or anything else like IAM cleanup, security, etc.
 
 

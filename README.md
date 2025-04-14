@@ -101,11 +101,7 @@ To avoid ongoing charges, delete all created AWS resources:
 - **🧱 Delete ECS Services and Cluster**  
   In the **ECS Console**, remove any services or clusters related to this project.
 
-Sure! Here's the **complete Docker installation section** for Windows, Linux, and macOS in clean, professional **Markdown format**, based on your content (enhanced + corrected for accuracy and readability):
 
----
-
-```markdown
 ## 🔧 Prerequisites: Install Docker & AWS CLI
 
 Before starting the CI/CD setup, you must install **Docker** and configure the **AWS CLI**.
@@ -143,13 +139,7 @@ Open PowerShell or Command Prompt and run:
 
 ```bash
 docker --version
-```
 
-Then test Docker with:
-
-```bash
-docker run hello-world
-```
 
 ---
 

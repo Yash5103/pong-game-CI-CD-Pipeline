@@ -8,7 +8,7 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t game-repo .
+      - docker build -t pong-game .
       - echo Tagging the Docker image...
       - docker tag pong-game:latest 897722675270.dkr.ecr.eu-north-1.amazonaws.com/game-repo:latest
   post_build:

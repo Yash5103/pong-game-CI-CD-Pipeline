@@ -38,3 +38,66 @@ By completing this project, you'll understand how to integrate various AWS servi
 3. The built docker image is pushed to Amazon ECR as new container image with specific Tag.
 4. CodePipeline uses Code Deploy to update ECS service, replacing old container with new one, ensuring the Ping Pong game runs with updated version.
 
+---
+
+## ⏱️ Estimated Time & Cost
+
+- **Estimated Time:** 3–4 hours  
+- **Estimated Cost:** ~$1 (based on AWS free tier + minimal usage)
+
+---
+
+## 🪜 Project Steps
+
+1. **🛠️ Prerequisites**
+   - Install **Docker**
+   - Install and configure **AWS CLI**
+   - Authenticate with AWS using `aws configure`
+
+2. **📦 Set Up ECS Cluster and ECR Repository**
+   - Create a new **ECS Cluster** (Fargate type)
+   - Create a new **ECR Repository** to store Docker images
+
+3. **🕹️ Prepare the Ping Pong Game Code**
+   - Add a `Dockerfile` for containerization
+   - Ensure the application is ready to run inside a container
+
+4. **🔨 Set Up CodeBuild for Continuous Integration**
+   - Create a **CodeBuild Project**
+   - Provide a `buildspec.yml` to define build steps
+   - Configure permissions (IAM Role) to push to ECR
+
+5. **🚀 Set Up CodePipeline for Continuous Deployment**
+   - Create a **CodePipeline**
+   - Integrate CodeBuild and ECS deployment stages
+   - Connect GitHub or CodeCommit repository as source
+
+6. **🧪 Test the Pipeline**
+   - Push code changes to your repo
+   - Verify that the pipeline triggers automatically
+   - Confirm successful ECS deployment
+
+---
+
+## 🧹 Clean Up Resources
+
+To avoid ongoing charges, delete all created AWS resources:
+
+- **🗑️ Delete CodePipeline**  
+  Go to the **CodePipeline Console**, find your pipeline, and delete it.
+
+- **🗑️ Delete CodeBuild Project**  
+  In the **CodeBuild Console**, locate and delete your build project.
+
+- **🛡️ Remove IAM Roles and Policies**  
+  Delete IAM roles for **CodePipeline**, **CodeBuild**, and any **inline policies**.
+
+- **🪣 Delete S3 Bucket (optional)**  
+  If used for artifacts, delete the **S3 bucket** created during the setup.
+
+- **📦 Delete ECR Repository**  
+  Go to the **ECR Console** and delete the repository used for storing Docker images.
+
+- **🧱 Delete ECS Services and Cluster**  
+  In the **ECS Console**, remove any services or clusters related to this project.
+

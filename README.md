@@ -1057,5 +1057,5 @@ http://<public_ip>:80
 ---
 
 🎉 Congratulations! You've successfully set up a complete CI/CD pipeline for your **Ping Pong Game** using **AWS CodePipeline, ECS, ECR, S3, and CodeBuild**!
-```
+
 

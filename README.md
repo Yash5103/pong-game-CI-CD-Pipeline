@@ -29,3 +29,12 @@ By completing this project, you'll understand how to integrate various AWS servi
 | 📦 Amazon ECR        | Stores and manages Docker images used in ECS tasks                             |
 | 🧱 AWS CodeBuild     | Handles the build phase, including Docker image creation                       |
 | 🔐 IAM Roles & Policies | Provides secure access between AWS services involved in the pipeline        |
+
+## Architecture Diagran
+![image](https://github.com/user-attachments/assets/a6054913-6bca-4297-906b-42ff20aa0811)
+
+1. Push the updated code to Github repo, which triggers the CI/CD pipeline in AWS Codepipeline.
+2. CodeBuild pulls the code, builds docker image for the Ping Pong game , tags it and prepares it for deployment.
+3. The built docker image is pushed to Amazon ECR as new container image with specific Tag.
+4. CodePipeline uses Code Deploy to update ECS service, replacing old container with new one, ensuring the Ping Pong game runs with updated version.
+

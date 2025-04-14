@@ -384,8 +384,94 @@ aws configure
 Once completed, your **AWS CLI** is successfully configured and ready to use!
 
 ```
+```
+## 🛠️ Set up ECS Cluster and ECR Repository
+
+To deploy the **Ping Pong Game** using **Amazon ECS**, follow these steps:
+
+### 1. Create IAM Roles and Policies
+
+Before deploying the container, we need to set up **IAM (Identity and Access Management)** roles to give **ECS** the necessary permissions to run tasks securely.
+
+#### Create a Role for ECS Tasks:
+1. Navigate to the **IAM Console** > **Roles** > **Create role**.
+2. Select **AWS Service** > **Elastic Container Service** > **Elastic Container Service Task**.
+3. Attach the following policies:
+   - **AmazonECSTaskExecutionRolePolicy**
+4. Name the role (e.g., `ECSTaskExecutionRole`) and click **Create Role**.
+
+This role will allow **ECS** to pull container images from **ECR** and send logs to **CloudWatch**.
 
 ---
+
+### 2. Create an Amazon ECR Repository
+
+**Amazon Elastic Container Registry (ECR)** is a managed Docker container registry that helps store and manage your container images.
+
+#### To create an ECR repository:
+1. Open the **ECR Console** in the AWS Management Console.
+2. Click **Create repository**.
+3. Choose the repository name (e.g., `ping-pong-game-repo`).
+4. Leave the defaults for encryption unless specific encryption settings are required.
+5. Click **Create repository**.
+6. Copy the repository **URI** (e.g., `097670902547.dkr.ecr.ap-south-1.amazonaws.com/ping-pong-game-repo`) for later use.
+
+---
+
+### 3. Create an ECS Cluster
+
+An **ECS Cluster** is responsible for managing the compute resources needed to run your tasks.
+
+#### To create an ECS Cluster:
+1. Open the **ECS Console**.
+2. Click **Clusters** > **Create Cluster**.
+3. Provide a cluster name (e.g., `ping-pong-game-cluster`).
+4. Choose **AWS Fargate** for a serverless setup.
+5. Keep the rest as default and click **Create** to finalize the cluster.
+
+---
+
+### 4. Define an ECS Task Definition
+
+A **Task Definition** is a blueprint that defines how a container should run, including the image, memory, CPU, networking, and logging.
+
+#### To define a Task Definition:
+1. Go to the **ECS Console** > **Task Definitions** > **Create New Task Definition**.
+2. Give a task definition family name (e.g., `ping-pong-task`).
+3. Choose **Fargate** as the launch type.
+4. Specify the following:
+   - **Task Role:** Select the IAM role (`ECSTaskExecutionRole`).
+   - **Container Definitions:**
+     - **Container name:** `ping-pong-container`.
+     - **Image:** Add the ECR URI that you copied previously (e.g., `097670902547.dkr.ecr.ap-south-1.amazonaws.com/ping-pong-game-repo:latest`).
+5. Leave the rest as default.
+6. Click **Create** to save the task definition.
+
+Now, the task definition is set, and **ECS** knows how to run your container.
+
+---
+
+### 5. Set Up an ECS Service
+
+An **ECS Service** ensures that your application is always running and manages the number of task instances.
+
+#### To set up an ECS Service:
+1. Go to the **ECS Console** > **Clusters** > **ping-pong-game-cluster** > **Create Service**.
+2. Choose:
+   - **Launch type:** Fargate.
+   - **Task definition:** Select the one created earlier.
+   - **Service name:** `ping-pong-service`.
+   - **Desired Number of tasks:** 1.
+3. Leave everything else as default.
+4. Click **Create Service**.
+
+Your **Ping Pong Game** is now running as an **ECS Service**!
+
+---
+
+The next steps will guide you through preparing the **Ping Pong Game** code for deployment.
+
+
 
 
 

@@ -151,6 +151,14 @@ docker --version
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
+### 🐧 Docker Installation on Linux (Ubuntu/Debian)
+
+#### 🔄 Remove Old Docker Versions (if any)
+
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+
 #### 🛠️ Set Up Docker Repository
 
 Update your system:
@@ -244,4 +252,4 @@ docker run hello-world
 
 ---
 
-This markdown is ready to be pasted directly into your `README.md` on GitHub. Let me know when you’re ready to proceed with the **AWS CLI configuration section**! 💻🛠️
+

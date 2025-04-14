@@ -323,6 +323,12 @@ aws --version
 
 If you see the version number, the installation was successful!
 ```
+
+Here’s the **Create or Retrieve AWS Credentials** and **Configure AWS CLI** section formatted in **Markdown** for your README:
+
+---
+
+```
 ## 🔑 Create or Retrieve AWS Credentials
 
 To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Access Key**. Follow the steps below to create or retrieve your credentials:
@@ -364,15 +370,22 @@ Now that you have your credentials, let’s set up the AWS CLI:
 
 ```bash
 aws configure
+```
 
-You’ll be prompted to enter the following details:
+3. You’ll be prompted to enter the following details:
 
-AWS Access Key ID: Enter your access key.
+- **AWS Access Key ID:** Enter your access key.
+- **AWS Secret Access Key:** Enter your secret key.
+- **Default region name:** Enter your preferred region (e.g., `us-east-1`, `ap-south-1` for India).
+- **Default output format:** Leave this blank (default) or choose `json`, `table`, or `text`.
 
-AWS Secret Access Key: Enter your secret key.
+---
 
-Default region name: Enter your preferred region (e.g., us-east-1, ap-south-1 for India).
+Once completed, your **AWS CLI** is successfully configured and ready to use!
 
-Default output format: Leave this blank (default) or choose json, table, or text.
+```
 
-Once completed, your AWS CLI is successfully configured and ready to use!
+---
+
+
+

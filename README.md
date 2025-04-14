@@ -323,9 +323,56 @@ aws --version
 
 If you see the version number, the installation was successful!
 ```
+## 🔑 Create or Retrieve AWS Credentials
+
+To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Access Key**. Follow the steps below to create or retrieve your credentials:
 
 ---
 
-You can now copy and paste this directly into your `README.md`. Let me know if you need help with the next section! 🛠️
+### ✅ If You Already Have an IAM User:
 
+1. Log in to the [AWS Management Console](https://aws.amazon.com/console/).
+2. Navigate to **IAM** (Identity and Access Management).
+3. Click on **Users** in the left sidebar.
+4. Select your **username**.
+5. Go to the **Security credentials** tab.
+6. Under **Access keys**, you will find your keys (or generate new ones if needed).
 
+---
+
+### 🚀 If You Don’t Have an IAM User Yet:
+
+1. Log in to the **AWS Console**.
+2. Open the **IAM** service.
+3. Click on **Users** → **Add user**.
+4. Set a **username** and check **Programmatic access**.
+5. Assign a **permission policy** (e.g., "AdministratorAccess" or custom permissions).
+6. Click **Create user** and download the generated `.csv` file with your username and password.
+7. Go back to the **user list** → click on your created user → go to **Security credentials** → click **Create access key**.
+8. Download the `.csv` file containing the **Access Key ID** and **Secret Access Key** for AWS CLI.
+
+> 📌 **Important:** Keep your **secret access key** safe! If lost, you cannot retrieve it—only regenerate a new one.
+
+---
+
+## ⚙️ Configure AWS CLI
+
+Now that you have your credentials, let’s set up the AWS CLI:
+
+1. Open a **Terminal** (or **Command Prompt** on Windows).
+2. Run the configuration command:
+
+```bash
+aws configure
+
+You’ll be prompted to enter the following details:
+
+AWS Access Key ID: Enter your access key.
+
+AWS Secret Access Key: Enter your secret key.
+
+Default region name: Enter your preferred region (e.g., us-east-1, ap-south-1 for India).
+
+Default output format: Leave this blank (default) or choose json, table, or text.
+
+Once completed, your AWS CLI is successfully configured and ready to use!

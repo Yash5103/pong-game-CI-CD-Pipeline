@@ -101,3 +101,157 @@ To avoid ongoing charges, delete all created AWS resources:
 - **🧱 Delete ECS Services and Cluster**  
   In the **ECS Console**, remove any services or clusters related to this project.
 
+Sure! Here's the **complete Docker installation section** for Windows, Linux, and macOS in clean, professional **Markdown format**, based on your content (enhanced + corrected for accuracy and readability):
+
+---
+
+```markdown
+## 🔧 Prerequisites: Install Docker & AWS CLI
+
+Before starting the CI/CD setup, you must install **Docker** and configure the **AWS CLI**.
+
+---
+
+## 🐳 Docker Installation Guide
+
+This project uses Docker to containerize the Ping Pong game. Choose your OS below and follow the instructions:
+
+---
+
+### 🪟 Docker Installation on Windows
+
+#### ✅ Check System Requirements
+- Windows 10/11 (64-bit): Pro, Enterprise, or Education edition
+- WSL2 backend (Windows Subsystem for Linux 2) must be enabled
+
+#### 📥 Download Docker Desktop
+- Visit the [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/) page
+- Download and run the installer
+
+#### ⚙️ Install Docker Desktop
+- Follow the on-screen instructions
+- Ensure WSL2 backend is selected during setup
+
+#### ⚙️ Configure Docker
+- Launch Docker Desktop
+- Navigate to `Settings > Resources > WSL Integration`
+- Enable your WSL distributions
+
+#### 🔍 Verify Docker Installation
+
+Open PowerShell or Command Prompt and run:
+
+```bash
+docker --version
+```
+
+Then test Docker with:
+
+```bash
+docker run hello-world
+```
+
+---
+
+### 🐧 Docker Installation on Linux (Ubuntu/Debian)
+
+#### 🔄 Remove Old Docker Versions (if any)
+
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+
+#### 🛠️ Set Up Docker Repository
+
+Update your system:
+
+```bash
+sudo apt-get update
+```
+
+Install dependencies:
+
+```bash
+sudo apt-get install ca-certificates curl gnupg
+```
+
+Add Docker’s GPG key and repository:
+
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+#### 📦 Install Docker Engine
+
+```bash
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+#### 🚀 Start Docker & Verify Installation
+
+Start Docker:
+
+```bash
+sudo systemctl start docker
+```
+
+Test Docker:
+
+```bash
+sudo docker run hello-world
+```
+
+#### 🙌 Optional: Run Docker Without `sudo`
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Log out and log back in to apply the changes.
+
+---
+
+### 🍏 Docker Installation on macOS
+
+#### ✅ Check System Requirements
+- macOS Monterey (12) or later is recommended
+- Virtualization must be enabled
+
+#### 📥 Download Docker Desktop
+- Visit the [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/) page
+- Choose the correct version for your system (Intel or Apple Silicon)
+
+#### ⚙️ Install Docker Desktop
+- Open the `.dmg` installer
+- Drag Docker to the **Applications** folder
+- Launch Docker and complete the onboarding steps
+
+#### 🔍 Verify Docker Installation
+
+Open the **Terminal** and run:
+
+```bash
+docker --version
+```
+
+Test Docker functionality:
+
+```bash
+docker run hello-world
+```
+
+---
+
+✅ Once Docker is installed, proceed to AWS CLI configuration.
+```
+
+---
+
+This markdown is ready to be pasted directly into your `README.md` on GitHub. Let me know when you’re ready to proceed with the **AWS CLI configuration section**! 💻🛠️

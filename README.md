@@ -471,7 +471,166 @@ Your **Ping Pong Game** is now running as an **ECS Service**!
 
 The next steps will guide you through preparing the **Ping Pong Game** code for deployment.
 
+Here’s the **Prepare the Ping Pong Game Code** section in **Markdown** for your `README.md`, with "2048 game" replaced by **Ping Pong Game**:
 
+---
+
+
+## 🎮 Prepare the Ping Pong Game Code
+
+To deploy the **Ping Pong Game**, follow these steps:
+
+### 1. Clone the Website Code
+
+The website code for the **Ping Pong Game** is already provided. To get this code, open your preferred IDE and terminal, then run:
+
+```bash
+git clone https://github.com/Yash5103/Pong-game.git
+cd PingPongGame-Dockerized-CICD
+```
+---
+
+### 2. Run a Docker Container and Push to ECR
+
+The cloned project includes a `Dockerfile` that defines how to containerize the **Ping Pong Game**. We'll run the container locally, then push it to **Amazon ECR**.
+
+#### 📄 Dockerfile Overview:
+
+```dockerfile
+# Use the official Nginx image as the base
+FROM nginx:latest
+
+# Copy the Ping Pong Game files to the Nginx web root
+COPY . /usr/share/nginx/html
+
+# Expose the default Nginx HTTP port
+EXPOSE 80
+
+# Start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+This `Dockerfile` sets up a lightweight container using the Nginx web server to serve the **Ping Pong Game** over HTTP.
+
+---
+
+#### 🏗️ Build the Docker Image
+
+Make sure Docker Desktop is running, then run:
+
+```bash
+docker build -t ping-pong-game .
+```
+
+---
+
+#### 🏷️ Tag the Docker Image for ECR
+
+Replace `<ECR_URI>` with your actual ECR repository URI:
+
+```bash
+docker tag ping-pong-game:latest <ECR_URI>:latest
+```
+
+Example:
+
+```bash
+docker tag ping-pong-game:latest 097670902547.dkr.ecr.ap-south-1.amazonaws.com/ping-pong-game-repo:latest
+```
+
+---
+
+#### 📤 Push the Image to ECR
+
+Authenticate with ECR:
+
+```bash
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin <ECR_URI>
+```
+
+Push the image:
+
+```bash
+docker push <ECR_URI>:latest
+```
+
+---
+
+#### ✅ Verify the Image in ECR
+
+Go to the **ECR Console** and check if the image appears under your repository (e.g., `ping-pong-game-repo`).
+
+```
+Here's the **Access the Website through ECS URL** section in **Markdown format**, with all the requested content and the "2048" game references replaced with **Ping Pong Game**:
+
+---
+
+```
+## 🌐 Access the Website through ECS URL
+
+Now that you've pushed your containerized **Ping Pong Game** to Amazon ECR and deployed it via ECS, follow the steps below to access the website:
+
+---
+
+### ✅ Step 1: Verify the ECS Service is Running
+
+1. Go to the [Amazon ECS Console](https://console.aws.amazon.com/ecs/).
+2. Navigate to the **Clusters** section.
+3. Select your cluster (e.g., `ping-pong-game-cluster`).
+4. Click on the **Services** tab.
+5. Confirm that your service (e.g., `ping-pong-service`) is in the `RUNNING` status and the desired number of tasks are active.
+
+---
+
+### 🌍 Step 2: Find the Public IP Address of the ECS Task
+
+1. Under your cluster, go to the **Tasks** tab.
+2. Click on the running task to open its details.
+3. In the **Network** section, locate the **Public IP** assigned to your ECS task.
+
+> 📌 This is the IP address through which your Ping Pong Game will be accessible.
+
+---
+
+### 🔐 Step 3: Modify Security Group to Allow HTTP Traffic
+
+1. In the **Network** section, find the **Security Group ID** associated with the task.
+2. Click on the Security Group ID — this will take you to the **EC2 Console**.
+3. In the **Inbound Rules** tab, click **Edit inbound rules**.
+4. Add the following rule:
+
+   - **Type:** HTTP  
+   - **Protocol:** TCP  
+   - **Port Range:** 80  
+   - **Source:** Anywhere (`0.0.0.0/0`) or a specific IP range if desired
+
+5. Click **Save rules** to apply changes.
+
+---
+
+### 🌐 Step 4: Access the Ping Pong Game Website
+
+- Open your browser and type:
+
+```text
+http://<Public-IP>:80
+```
+
+- Replace `<Public-IP>` with the actual public IP address you found earlier.
+
+> ✅ You can also directly click on the open address option if provided in the ECS console.
+
+---
+
+### 🕹️ Step 5: Verify the Game’s Functionality
+
+- Ensure the **Ping Pong Game** loads correctly in the browser.
+- Interact with the game and verify that the frontend is functioning as expected.
+
+---
+
+🎉 That’s it! Your **Ping Pong Game** is now live and accessible via a public IP using Amazon ECS & ECR.
+```
 
 
 

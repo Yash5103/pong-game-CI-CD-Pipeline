@@ -2,7 +2,7 @@
 
 ## 📄 Project Description
 
-This project focuses on setting up a **CI/CD pipeline** for deploying a Dockerized version of the **2048 Ping Pong Game** to AWS. The pipeline automates the process of building, testing, and deploying the game to a scalable infrastructure using:
+This project focuses on setting up a **CI/CD pipeline** for deploying a Dockerized version of the **Ping Pong Game** to AWS. The pipeline automates the process of building, testing, and deploying the game to a scalable infrastructure using:
 
 - **Amazon ECS**
 - **Amazon ECR**

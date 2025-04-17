@@ -520,6 +520,12 @@ Make sure Docker Desktop is running, then run:
 docker build -t ping-pong-game .
 ```
 
+For Macs with Apple Silicon (M series chips), Docker image is built for arm64, but the AWS Fargate expects x86_64 (Intel/AMD architecture)
+Add --platform=linux/amd64 in the Docker build command.
+
+```bash
+docker build --platform=linux/amd64 -t ping-pong-game .
+```
 ---
 
 #### 🏷7.4 Tag the Docker Image for ECR

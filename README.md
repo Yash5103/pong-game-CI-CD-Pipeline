@@ -543,7 +543,7 @@ docker tag ping-pong-game:latest 097670902547.dkr.ecr.ap-south-1.amazonaws.com/p
 Authenticate with ECR:
 
 ```bash
-aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin <ECR_URI>
+aws ecr get-login-password --region eu-nort-1 | docker login --username AWS --password-stdin <ECR_URI>
 ```
 
 Push the image:

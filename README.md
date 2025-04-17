@@ -329,7 +329,7 @@ Here’s the **Create or Retrieve AWS Credentials** and **Configure AWS CLI** se
 ---
 
 ```
-## 1 Create or Retrieve AWS Credentials
+## 1. Create or Retrieve AWS Credentials
 
 To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Access Key**. Follow the steps below to create or retrieve your credentials:
 
@@ -385,7 +385,7 @@ Once completed, your **AWS CLI** is successfully configured and ready to use!
 
 ```
 ```
-## 2 Set up ECS Cluster and ECR Repository
+## 2. Set up ECS Cluster and ECR Repository
 
 To deploy the **Ping Pong Game** using **Amazon ECS**, follow these steps:
 

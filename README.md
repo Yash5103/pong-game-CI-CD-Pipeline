@@ -471,8 +471,6 @@ Your **Ping Pong Game** is now running as an **ECS Service**!
 
 The next steps will guide you through preparing the **Ping Pong Game** code for deployment.
 
-Here’s the **Prepare the Ping Pong Game Code** section in **Markdown** for your `README.md`, with "2048 game" replaced by **Ping Pong Game**:
-
 ---
 
 
@@ -561,7 +559,6 @@ docker push <ECR_URI>:latest
 Go to the **ECR Console** and check if the image appears under your repository (e.g., `ping-pong-game-repo`).
 
 ```
-Here's the **Access the Website through ECS URL** section in **Markdown format**, with all the requested content and the "2048" game references replaced with **Ping Pong Game**:
 
 ---
 
@@ -632,9 +629,7 @@ http://<Public-IP>:80
 🎉 That’s it! Your **Ping Pong Game** is now live and accessible via a public IP using Amazon ECS & ECR.
 
 ```
-Absolutely! Here's your **complete guide** with the **updated placeholder explanation** section—**not skipping any content** and following your earlier style of explanation. I've replaced the 2048 game with the **Ping Pong Game**, and the **Placeholder Details** now include **how to find each one**, just like you wanted.
 
----
 
 ```
 ## 8. Step-by-Step Guide to Push the Ping Pong Game Code to GitHub with CI/CD

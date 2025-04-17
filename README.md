@@ -484,7 +484,7 @@ The website code for the **Ping Pong Game** is already provided. To get this cod
 
 ```bash
 git clone https://github.com/Yash5103/Pong-game.git
-cd Pong game
+cd Pong-game
 ```
 ---
 

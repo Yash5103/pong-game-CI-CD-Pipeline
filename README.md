@@ -252,7 +252,7 @@ Here’s the **Configure AWS CLI** section formatted in **Markdown** for your RE
 ---
 
 
-## 🔧 Configure AWS CLI
+##  Configure AWS CLI
 
 The **AWS Command Line Interface (CLI)** allows you to interact with AWS services directly from your terminal. Follow the steps below to install and configure the AWS CLI on your system.
 
@@ -329,13 +329,13 @@ Here’s the **Create or Retrieve AWS Credentials** and **Configure AWS CLI** se
 ---
 
 ```
-## 🔑 Create or Retrieve AWS Credentials
+## 1 Create or Retrieve AWS Credentials
 
 To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Access Key**. Follow the steps below to create or retrieve your credentials:
 
 ---
 
-### ✅ If You Already Have an IAM User:
+### 1.1 If You Already Have an IAM User:
 
 1. Log in to the [AWS Management Console](https://aws.amazon.com/console/).
 2. Navigate to **IAM** (Identity and Access Management).
@@ -346,7 +346,7 @@ To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Ac
 
 ---
 
-### 🚀 If You Don’t Have an IAM User Yet:
+### 1.1 If You Don’t Have an IAM User Yet:
 
 1. Log in to the **AWS Console**.
 2. Open the **IAM** service.
@@ -361,7 +361,7 @@ To configure AWS CLI, you’ll need an **AWS Access Key ID** and **AWS Secret Ac
 
 ---
 
-## ⚙️ Configure AWS CLI
+## ⚙1.3 Configure AWS CLI
 
 Now that you have your credentials, let’s set up the AWS CLI:
 
@@ -385,15 +385,15 @@ Once completed, your **AWS CLI** is successfully configured and ready to use!
 
 ```
 ```
-## 🛠️ Set up ECS Cluster and ECR Repository
+## 2 Set up ECS Cluster and ECR Repository
 
 To deploy the **Ping Pong Game** using **Amazon ECS**, follow these steps:
 
-### 1. Create IAM Roles and Policies
+### 2.1 Create IAM Roles and Policies
 
 Before deploying the container, we need to set up **IAM (Identity and Access Management)** roles to give **ECS** the necessary permissions to run tasks securely.
 
-#### Create a Role for ECS Tasks:
+#### 2.2 Create a Role for ECS Tasks:
 1. Navigate to the **IAM Console** > **Roles** > **Create role**.
 2. Select **AWS Service** > **Elastic Container Service** > **Elastic Container Service Task**.
 3. Attach the following policies:
@@ -404,11 +404,11 @@ This role will allow **ECS** to pull container images from **ECR** and send logs
 
 ---
 
-### 2. Create an Amazon ECR Repository
+### 3. Create an Amazon ECR Repository
 
 **Amazon Elastic Container Registry (ECR)** is a managed Docker container registry that helps store and manage your container images.
 
-#### To create an ECR repository:
+#### 3.1 To create an ECR repository:
 1. Open the **ECR Console** in the AWS Management Console.
 2. Click **Create repository**.
 3. Choose the repository name (e.g., `ping-pong-game-repo`).
@@ -418,11 +418,11 @@ This role will allow **ECS** to pull container images from **ECR** and send logs
 
 ---
 
-### 3. Create an ECS Cluster
+### 4. Create an ECS Cluster
 
 An **ECS Cluster** is responsible for managing the compute resources needed to run your tasks.
 
-#### To create an ECS Cluster:
+#### 4.1 To create an ECS Cluster:
 1. Open the **ECS Console**.
 2. Click **Clusters** > **Create Cluster**.
 3. Provide a cluster name (e.g., `ping-pong-game-cluster`).
@@ -431,11 +431,11 @@ An **ECS Cluster** is responsible for managing the compute resources needed to r
 
 ---
 
-### 4. Define an ECS Task Definition
+### 5. Define an ECS Task Definition
 
 A **Task Definition** is a blueprint that defines how a container should run, including the image, memory, CPU, networking, and logging.
 
-#### To define a Task Definition:
+#### 5.1 To define a Task Definition:
 1. Go to the **ECS Console** > **Task Definitions** > **Create New Task Definition**.
 2. Give a task definition family name (e.g., `ping-pong-task`).
 3. Choose **Fargate** as the launch type.
@@ -451,11 +451,11 @@ Now, the task definition is set, and **ECS** knows how to run your container.
 
 ---
 
-### 5. Set Up an ECS Service
+### 6. Set Up an ECS Service
 
 An **ECS Service** ensures that your application is always running and manages the number of task instances.
 
-#### To set up an ECS Service:
+#### 6.1 To set up an ECS Service:
 1. Go to the **ECS Console** > **Clusters** > **ping-pong-game-cluster** > **Create Service**.
 2. Choose:
    - **Launch type:** Fargate.
@@ -476,11 +476,11 @@ Here’s the **Prepare the Ping Pong Game Code** section in **Markdown** for you
 ---
 
 
-## 🎮 Prepare the Ping Pong Game Code
+## 7. Prepare the Ping Pong Game Code
 
 To deploy the **Ping Pong Game**, follow these steps:
 
-### 1. Clone the Website Code
+### 7.1 Clone the Website Code
 
 The website code for the **Ping Pong Game** is already provided. To get this code, open your preferred IDE and terminal, then run:
 
@@ -490,7 +490,7 @@ cd PingPongGame-Dockerized-CICD
 ```
 ---
 
-### 2. Run a Docker Container and Push to ECR
+### 7.2 Run a Docker Container and Push to ECR
 
 The cloned project includes a `Dockerfile` that defines how to containerize the **Ping Pong Game**. We'll run the container locally, then push it to **Amazon ECR**.
 
@@ -514,7 +514,7 @@ This `Dockerfile` sets up a lightweight container using the Nginx web server to 
 
 ---
 
-#### 🏗️ Build the Docker Image
+#### 7.3 Build the Docker Image
 
 Make sure Docker Desktop is running, then run:
 
@@ -524,7 +524,7 @@ docker build -t ping-pong-game .
 
 ---
 
-#### 🏷️ Tag the Docker Image for ECR
+#### 🏷7.4 Tag the Docker Image for ECR
 
 Replace `<ECR_URI>` with your actual ECR repository URI:
 
@@ -540,7 +540,7 @@ docker tag ping-pong-game:latest 097670902547.dkr.ecr.ap-south-1.amazonaws.com/p
 
 ---
 
-#### 📤 Push the Image to ECR
+#### 7.5 Push the Image to ECR
 
 Authenticate with ECR:
 
@@ -556,7 +556,7 @@ docker push <ECR_URI>:latest
 
 ---
 
-#### ✅ Verify the Image in ECR
+#### 7.6 Verify the Image in ECR
 
 Go to the **ECR Console** and check if the image appears under your repository (e.g., `ping-pong-game-repo`).
 
@@ -566,7 +566,7 @@ Here's the **Access the Website through ECS URL** section in **Markdown format**
 ---
 
 ```
-## 🌐 Access the Website through ECS URL
+## 7.7 Access the Website through ECS URL
 
 Now that you've pushed your containerized **Ping Pong Game** to Amazon ECR and deployed it via ECS, follow the steps below to access the website:
 
@@ -637,11 +637,11 @@ Absolutely! Here's your **complete guide** with the **updated placeholder explan
 ---
 
 ```
-## 🚀 Step-by-Step Guide to Push the Ping Pong Game Code to GitHub with CI/CD
+## 8. Step-by-Step Guide to Push the Ping Pong Game Code to GitHub with CI/CD
 
 ---
 
-### 🆕 1. Create a New GitHub Repository
+### 🆕 8.1 Create a New GitHub Repository
 
 1. Go to [GitHub](https://github.com/) and click **New Repository**.
 2. Provide a name like `ping-pong-game-ci-cd`.
@@ -651,7 +651,7 @@ Absolutely! Here's your **complete guide** with the **updated placeholder explan
 
 ---
 
-### 🛠️ 2. Modify `buildspec.yml`
+### 🛠️ 8.2 Modify `buildspec.yml`
 
 The `buildspec.yml` file is crucial for **AWS CodeBuild**, as it defines the commands to build and push the Docker image to **Amazon ECR**, and prepare it for deployment to **ECS**.
 
@@ -706,7 +706,7 @@ artifacts:
 
 ---
 
-### ⬆️ 3. Push the Code to GitHub
+### ⬆️ 8.3 Push the Code to GitHub
 
 1. Open a terminal or command prompt in the folder where your Ping Pong Game code and `buildspec.yml` are located.
 2. Run the following commands:
@@ -735,7 +735,7 @@ git push -u origin main
 
 ---
 
-### ✅ 4. Verify on GitHub
+### ✅ 8.4 Verify on GitHub
 
 Visit your GitHub repository in the browser. You should now see:
 - Your Ping Pong Game source code
@@ -753,7 +753,7 @@ Here's your **complete and cleanly formatted guide** with updated names (replaci
 ---
 
 ```
-## 🛠️ Set Up CodeBuild for Continuous Integration (CI) – Ping Pong Game
+## 9 Set Up CodeBuild for Continuous Integration (CI) – Ping Pong Game
 
 ---
 
@@ -766,7 +766,7 @@ Here's your **complete and cleanly formatted guide** with updated names (replaci
 
 ---
 
-### 🔐 1. Create an IAM Role for CodeBuild
+### 🔐 9.1 Create an IAM Role for CodeBuild
 
 AWS services like CodeBuild need permissions to interact with **ECR**, **ECS**, **S3**, and **CodeBuild** itself.
 
@@ -792,7 +792,7 @@ AWS services like CodeBuild need permissions to interact with **ECR**, **ECS**, 
 
 ---
 
-#### 🧩 Attach Inline Policy for ECS
+####  Attach Inline Policy for ECS
 
 1. Go to the role: `IAM > Roles > codeBuildServiceRole`
 2. Click **Add permissions > Create inline policy**
@@ -824,7 +824,7 @@ You can get your `<ECS_SERVICE_ARN>` by navigating to:
 
 ---
 
-### 🪣 2. Create a S3 Bucket for Build Artifacts
+### 🪣 9.2 Create a S3 Bucket for Build Artifacts
 
 CodeBuild generates output files like Docker image metadata and logs. These are stored in an **S3 bucket** for later access.
 
@@ -839,7 +839,7 @@ CodeBuild generates output files like Docker image metadata and logs. These are 
 
 ---
 
-### 🔧 3. Create a CodeBuild Project
+### 🔧 9.3 Create a CodeBuild Project
 
 The CodeBuild project pulls your GitHub repo, builds the Docker image, and stores results in S3.
 
@@ -879,7 +879,7 @@ The CodeBuild project pulls your GitHub repo, builds the Docker image, and store
 
 ---
 
-### 🧪 4. Test the CodeBuild Project
+### 🧪 9.4 Test the CodeBuild Project
 
 #### ▶️ Start a Build:
 
@@ -904,7 +904,7 @@ Here is your fully preserved and cleanly formatted version of **"Set up CodePipe
 ---
 
 ```
-## 🚀 Set Up CodePipeline for Continuous Deployment – Ping Pong Game
+## 🚀 10. Set Up CodePipeline for Continuous Deployment – Ping Pong Game
 
 ---
 
@@ -915,7 +915,7 @@ Here is your fully preserved and cleanly formatted version of **"Set up CodePipe
 
 ---
 
-### 🏗️ 1. Create an AWS CodePipeline
+### 🏗️ 10.1 Create an AWS CodePipeline
 
 AWS CodePipeline connects different stages of your CI/CD process. We’ll define how updates in your GitHub repo will trigger builds and deployments to ECS.
 
@@ -996,7 +996,7 @@ Once built, the app is deployed to Amazon ECS automatically.
 
 ---
 
-### 🧪 2. Test the Pipeline
+### 🧪 10.2 Test the Pipeline
 
 Now let's test if the CI/CD pipeline works end-to-end.
 
@@ -1051,9 +1051,6 @@ git push -u origin main
 ```
 http://<public_ip>:80
 ```
-
-✅ Confirm the title on the site says: `2048 by YourName`
-
 ---
 
 🎉 Congratulations! You've successfully set up a complete CI/CD pipeline for your **Ping Pong Game** using **AWS CodePipeline, ECS, ECR, S3, and CodeBuild**!
